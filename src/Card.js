@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../node_modules/bootstrap-icons/icons/star-fill.svg";
 
 function Card(props) {
-  
   return (
     <div className="card col-lg-3 mb-3" style={{ width: "17rem" }}>
       <img src="https://picsum.photos/450/300" className="card-img-top" />
@@ -48,24 +47,26 @@ function Card(props) {
         {props.product.isForSale ? (
           <button
             className="btn btn-outline-dark mt-auto"
-            onClick={(() =>{ props.handlecart(props.product)
-            })
-            }
-            disabled={props.product.disable}
+            onClick={() => {
+              props.handlecart(props.product);
+            }}
+            disabled={props.cartitems.some(obj=> obj.id ==props.product.id)}
           >
             {" "}
             Add to Cart
           </button>
-        ) : (<div> 
-          <button className="btn btn-outline-dark mt-auto" disabled={true}>
-            View options
-          </button>
+        ) : (
+          <div>
+            <button className="btn btn-outline-dark mt-auto" disabled={true}>
+              View options
+            </button>
             <div
-            className="badge bg-danger text-white position-absolute"
-            style={{ top: "0.5rem", right: "0.5rem" }}
-          >
-            Out of Stock
-          </div></div>
+              className="badge bg-danger text-white position-absolute"
+              style={{ top: "0.5rem", right: "0.5rem" }}
+            >
+              Out of Stock
+            </div>
+          </div>
         )}
       </div>
     </div>

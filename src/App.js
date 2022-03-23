@@ -9,14 +9,13 @@ import "../node_modules/bootstrap-icons/icons/cart-fill.svg";
 import { useState } from "react";
 
 function App() {
-  let products = [
+  const [products, setProducts] = useState([
     {
       id: 1,
       name: "iPhone",
       price: 100.0,
       isForSale: true,
       isRated: true,
-      disable: false,
     },
     {
       id: 2,
@@ -25,24 +24,21 @@ function App() {
       isOffer: true,
       isForSale: true,
       isRated: true,
-      disable: false,
     },
     {
       id: 3,
       name: "Samsung",
       price: 30.0,
       isForSale: true,
-      disable: false,
       isOffer: true,
     },
-    { id: 4, name: "Xiaomi", price: 40.0, isForSale: false, disable: false },
+    { id: 4, name: "Xiaomi", price: 40.0, isForSale: false },
     {
       id: 5,
       name: "Vivo",
       price: 50.0,
       isForSale: false,
       isRated: true,
-      disable: false,
     },
     {
       id: 6,
@@ -50,7 +46,6 @@ function App() {
       price: 60.0,
       isForSale: true,
       isOffer: true,
-      disable: false,
     },
     {
       id: 7,
@@ -58,7 +53,6 @@ function App() {
       price: 70.0,
       isForSale: true,
       isRated: true,
-      disable: false,
     },
     {
       id: 8,
@@ -66,9 +60,8 @@ function App() {
       price: 80.0,
       isForSale: true,
       isOffer: true,
-      disable: false,
     },
-  ];
+  ]);
 
   const [Cart, setCart] = useState(0);
   const [disable, setdisable] = useState(products.disable);
@@ -109,6 +102,7 @@ function App() {
                       handlecart={handlecart}
                       key={product.name}
                       disable={disable}
+                      cartitems={cartitems}
                     />
                   );
                 })}
